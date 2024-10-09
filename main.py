@@ -12,24 +12,39 @@ def main(page: ft.Page):
     WIDTH = page.window.width
     HEIGHT = page.window.height
 
-    numero_pokemon = 1
+    numero_pokemon = ft.Ref[int]()
+    numero_pokemon.current = 1
+
+
+    def update_pokemon_image():
+        sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg"
+        imagem.src = sprite_url
+        page.update()
     
 
     # Função para visualizar o Pokémon anterior
     def preview_pokemon(e):
-        pass
+        if numero_pokemon.current == 1:
+            numero_pokemon.current = 150
+            update_pokemon_image()
+        elif numero_pokemon.current > 1:
+            numero_pokemon.current -= 1
+            update_pokemon_image()
 
     # Função para visualizar o próximo Pokémon
     def next_pokemon(e):
-        pass
+        if numero_pokemon.current == 150:
+            numero_pokemon.current = 1
+            update_pokemon_image()
+        elif numero_pokemon.current > 0:
+            numero_pokemon.current += 1
+            update_pokemon_image()
 
 
-    # endereco da imagem do pokemon
-    sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon}.svg"
 
     # Renderizando a imagem
     imagem = ft.Image(
-        src=sprite_url,
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
         scale=1,
         width=200,
         height=200
