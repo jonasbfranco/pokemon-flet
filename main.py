@@ -16,6 +16,9 @@ def main(page: ft.Page):
     numero_pokemon.current = 1
 
 
+    nivel = 3
+
+
     def update_pokemon_image():
         sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg"
         imagem.src = sprite_url
@@ -44,7 +47,7 @@ def main(page: ft.Page):
 
     # Renderizando a imagem
     imagem = ft.Image(
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg",
+        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg",
         scale=1,
         width=200,
         height=200
@@ -118,9 +121,63 @@ def main(page: ft.Page):
                         ]
                     ),
 
+
+                    ft.Column(
+                        spacing=0,
+                        top=290,
+                        left=20,
+                        right=20,
+                        alignment=ft.CrossAxisAlignment.START,
+                        controls=[
+                            ft.Row(
+                                alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                                width=WIDTH,
+                                height=100,
+                                controls=[
+                                    ft.Column(
+                                        spacing=0,
+                                        height=100,
+                                        controls=[
+                                            ft.Text(value="Charizard", color="#353B48", size=36, weight="bold"),
+                                            ft.Text(value="#006", color="#7F8C8D", size=18, weight="bold"),
+                                        ],
+                                    ),
+
+                                    ft.Row(
+                                        height=46,
+                                        spacing=10,
+                                        controls=[
+                                            ft.Column(
+                                                spacing=0,
+                                                alignment=ft.MainAxisAlignment.END,
+                                                controls=[
+                                                    ft.Text(value=f"Nível", color="#7F8C8D", size=10, weight="bold"),
+                                                    ft.Text(value="EVOLUÇÃO", color="#7F8C8D", size=10, weight="bold"),
+                                                ],
+                                            ),
+
+                                            ft.Row(
+                                                controls=[
+                                                ft.Text(value=f"{nivel}", color="#7F8C8D", size=40, weight="bold"),
+
+                                                ]
+                                            ),
+                                        ],
+                                    ),
+                                    
+                                ],
+                            ),
+                            
+
+                        ],
+                    ),
+
+
                 ],
             ), # fim da Stack
         ), # fim do Container principal
+
+
     )
 
 
