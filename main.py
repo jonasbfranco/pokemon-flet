@@ -173,6 +173,37 @@ def main(page: ft.Page):
                     ),
 
 
+                    ft.Container(
+                        height=HEIGHT-730,
+                        width=WIDTH-260,
+                        top = 400,
+                        left=20,
+                        bgcolor="#F79F1F",
+                        border_radius=30,
+                        alignment=ft.alignment.center,
+                        padding=ft.padding.only(left=10, top=10, right=10, bottom=10),
+                        content=ft.Text(value="Fogo", color="#FFFFFF", size=16, weight="bold"),
+                    ),
+
+                    ft.Row(
+                        left=20,
+                        top=485,
+                        controls=[
+                            ft.Text(
+                                value="Ele cospe fogo que é quente o suficiente para derreter pedregulhos. Pode causar incêndios florestais soprando chamas:",
+                                color="#7F8C8D",
+                                size=14,
+                                weight="bold",
+                                max_lines=4,
+                                width=WIDTH-80,
+                                text_align="justify",    
+                            )
+                        ],
+                    ),
+
+
+
+
                 ],
             ), # fim da Stack
         ), # fim do Container principal
