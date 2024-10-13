@@ -7,6 +7,14 @@ def main(page: ft.Page):
     page.window.maximizable = False
     page.theme_mode = ft.ThemeMode.DARK
     page.window.always_on_top = True
+
+    page.fonts = {
+        "zpix": "https://github.com/SolidZORO/zpix-pixel-font/releases/download/v3.1.9/zpix.ttf",
+        "Poppins": "fonts/Poppins-Regular.ttf"
+    }
+   
+    page.theme = ft.Theme(font_family="Poppins")
+    page.update()
     
 
     WIDTH = page.window.width
@@ -138,8 +146,8 @@ def main(page: ft.Page):
                                         spacing=0,
                                         height=100,
                                         controls=[
-                                            ft.Text(value="Charizard", color="#353B48", size=36, weight="bold"),
-                                            ft.Text(value="#006", color="#7F8C8D", size=18, weight="bold"),
+                                            ft.Text(value="Charizard", color="#353B48", size=36, weight="bold", font_family="zpix"),
+                                            ft.Text(value="#006", color="#7F8C8D", size=18, weight="bold", font_family="zpix"),
                                         ],
                                     ),
 
@@ -151,14 +159,14 @@ def main(page: ft.Page):
                                                 spacing=0,
                                                 alignment=ft.MainAxisAlignment.END,
                                                 controls=[
-                                                    ft.Text(value=f"Nível", color="#7F8C8D", size=10, weight="bold"),
-                                                    ft.Text(value="EVOLUÇÃO", color="#7F8C8D", size=10, weight="bold"),
+                                                    ft.Text(value=f"Nível", color="#7F8C8D", size=10, weight="bold", font_family="zpix"),
+                                                    ft.Text(value="EVOLUÇÃO", color="#7F8C8D", size=10, weight="bold", font_family="zpix"),
                                                 ],
                                             ),
 
                                             ft.Row(
                                                 controls=[
-                                                ft.Text(value=f"{nivel}", color="#7F8C8D", size=40, weight="bold"),
+                                                ft.Text(value=f"{nivel}", color="#7F8C8D", size=40, weight="bold", font_family="zpix"),
 
                                                 ]
                                             ),
@@ -182,7 +190,7 @@ def main(page: ft.Page):
                         border_radius=30,
                         alignment=ft.alignment.center,
                         padding=ft.padding.only(left=10, top=10, right=10, bottom=10),
-                        content=ft.Text(value="Fogo", color="#FFFFFF", size=16, weight="bold"),
+                        content=ft.Text(value=f"Fogo", color="#FFFFFF", size=16, weight="bold"),
                     ),
 
                     ft.Row(
@@ -190,7 +198,7 @@ def main(page: ft.Page):
                         top=485,
                         controls=[
                             ft.Text(
-                                value="Ele cospe fogo que é quente o suficiente para derreter pedregulhos. Pode causar incêndios florestais soprando chamas:",
+                                value=f"Ele cospe fogo que é quente o suficiente para derreter pedregulhos. Pode causar incêndios florestais soprando chamas:",
                                 color="#7F8C8D",
                                 size=14,
                                 weight="bold",
@@ -202,6 +210,54 @@ def main(page: ft.Page):
                     ),
 
 
+                    ft.Row(
+                        top=590,
+                        left=20,
+                        right=20,
+                        alignment=ft.MainAxisAlignment.SPACE_BETWEEN,
+                        width=WIDTH,
+                        controls=[
+                            ft.Column(
+                                spacing=0,
+                                controls=[
+                                    ft.Row(
+                                        spacing=3,
+                                        controls=[
+                                            ft.Icon(name=ft.icons.LINE_WEIGHT_SHARP, color='#000000', size=20, opacity=0.4),
+                                            ft.Text(value="PESO", color='#000000', size=14, weight='bold', opacity=0.4),
+                                        ],
+                                    ),
+                                    ft.Text(value=f"{90.0} kg", color='#000000', size=22, weight='bold', opacity=0.6),
+                                ],
+                            ),
+                            ft.Column(
+                                spacing=0,
+                                controls=[
+                                    ft.Row(
+                                        spacing=3,
+                                        controls=[
+                                            ft.Icon(name=ft.icons.HEIGHT, color='#000000', size=20, opacity=0.4),
+                                            ft.Text(value="ALTURA", color='#000000', size=14, weight='bold', opacity=0.4),
+                                        ],
+                                    ),
+                                    ft.Text(value=f"{1.7} m", color='#000000', size=22, weight='bold', opacity=0.6),
+                                ],
+                            ),
+                            ft.Column(
+                                spacing=0,
+                                controls=[
+                                    ft.Row(
+                                        spacing=3,
+                                        controls=[
+                                            ft.Icon(name=ft.icons.BOLT, color='#000000', size=20, opacity=0.4),
+                                            ft.Text(value="HABILIDADE", color='#000000', size=14, weight='bold', opacity=0.4),
+                                        ],
+                                    ),
+                                    ft.Text(value=f"Chama", color='#000000', size=22, weight='bold', opacity=0.6),
+                                ],
+                            ),
+                        ],
+                    ),
 
 
                 ],
@@ -216,4 +272,4 @@ def main(page: ft.Page):
 
     page.update()
 
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets")
