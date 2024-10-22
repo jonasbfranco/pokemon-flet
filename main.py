@@ -1,4 +1,6 @@
 import flet as ft
+import aiohttp
+import asyncio
 
 def main(page: ft.Page):
     page.window.width = 420
@@ -23,6 +25,12 @@ def main(page: ft.Page):
     numero_pokemon = ft.Ref[int]()
     numero_pokemon.current = 1
 
+    
+    async def buscar_pokemon(url):
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                return await response.json() 
+
 
     nivel = 3
 
@@ -34,35 +42,129 @@ def main(page: ft.Page):
     
 
     # Função para visualizar o Pokémon anterior
-    def preview_pokemon(e):
+    async def preview_pokemon(e):
         if numero_pokemon.current == 1:
             numero_pokemon.current = 150
-            update_pokemon_image()
+            
+            resultado = await buscar_pokemon(f"https://pokeapi.co/api/v2/pokemon/{numero_pokemon.current}")
+            sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg" 
+            name = f"{resultado['name']}"
+            imagem.src = sprite_url
+            nome.value = name
+            numero.value = numero_pokemon.current
+
+            tipo = f"{resultado['types'][0]['type']['name']}"
+            tipo_pokemon.value = tipo
+
+            height = f"{resultado['height']} Kg"
+            peso_pokemon.value = height
+
+            page.update()
+            ## update_pokemon_image()
         elif numero_pokemon.current > 1:
             numero_pokemon.current -= 1
-            update_pokemon_image()
+
+            resultado = await buscar_pokemon(f"https://pokeapi.co/api/v2/pokemon/{numero_pokemon.current}")
+            sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg" 
+            name = f"{resultado['name']}"
+            imagem.src = sprite_url
+            nome.value = name
+            numero.value = numero_pokemon.current
+
+            tipo = f"{resultado['types'][0]['type']['name']}"
+            tipo_pokemon.value = tipo
+
+            height = f"{resultado['height']} Kg"
+            peso_pokemon.value = height
+
+            page.update()
+
+            ## update_pokemon_image()
 
     # Função para visualizar o próximo Pokémon
-    def next_pokemon(e):
+    async def next_pokemon(e):
         if numero_pokemon.current == 150:
             numero_pokemon.current = 1
-            update_pokemon_image()
+
+            resultado = await buscar_pokemon(f"https://pokeapi.co/api/v2/pokemon/{numero_pokemon.current}")
+            sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg" 
+            name = f"{resultado['name']}"
+            imagem.src = sprite_url
+            nome.value = name
+            numero.value = numero_pokemon.current
+
+            tipo = f"{resultado['types'][0]['type']['name']}"
+            tipo_pokemon.value = tipo
+
+            height = f"{resultado['height']} Kg"
+            peso_pokemon.value = height
+
+            page.update()
+
+            ## update_pokemon_image()
         elif numero_pokemon.current > 0:
             numero_pokemon.current += 1
-            update_pokemon_image()
+            
+            resultado = await buscar_pokemon(f"https://pokeapi.co/api/v2/pokemon/{numero_pokemon.current}")
+            sprite_url = f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg" 
+            name = f"{resultado['name']}"
+            imagem.src = sprite_url
+            nome.value = name
+            numero.value = numero_pokemon.current
+
+            tipo = f"{resultado['types'][0]['type']['name']}"
+            tipo_pokemon.value = tipo
+
+            height = f"{resultado['height']} Kg"
+            peso_pokemon.value = height
+
+
+            page.update()
+
+            ## update_pokemon_image()
 
 
 
     # Renderizando a imagem
     imagem = ft.Image(
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg",
+        src=f"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/{numero_pokemon.current}.svg",
         scale=1,
         width=200,
         height=200
     )
 
-    
 
+    nome = ft.Text(
+                value="bulbasaur", 
+                color="#353B48", 
+                size=36, 
+                weight="bold", 
+                font_family="zpix"
+            )
+
+    numero = ft.Text(
+                value=f"#001", 
+                color="#7F8C8D", 
+                size=18, 
+                weight="bold", 
+                font_family="zpix"
+            )
+
+    tipo_pokemon = ft.Text(
+                value=f"grass", 
+                color="#FFFFFF", 
+                size=16, 
+                weight="bold", 
+                font_family="zpix"
+            )
+
+    peso_pokemon = ft.Text(
+                value=f"{7} kg", 
+                color='#000000', 
+                size=22, 
+                weight='bold', 
+                opacity=0.6,
+            )
 
     
     page.add(
@@ -146,8 +248,8 @@ def main(page: ft.Page):
                                         spacing=0,
                                         height=100,
                                         controls=[
-                                            ft.Text(value="Charizard", color="#353B48", size=36, weight="bold", font_family="zpix"),
-                                            ft.Text(value="#006", color="#7F8C8D", size=18, weight="bold", font_family="zpix"),
+                                            nome,
+                                            numero,
                                         ],
                                     ),
 
@@ -190,7 +292,7 @@ def main(page: ft.Page):
                         border_radius=30,
                         alignment=ft.alignment.center,
                         padding=ft.padding.only(left=10, top=10, right=10, bottom=10),
-                        content=ft.Text(value=f"Fogo", color="#FFFFFF", size=16, weight="bold"),
+                        content=tipo_pokemon,
                     ),
 
                     ft.Row(
@@ -227,7 +329,7 @@ def main(page: ft.Page):
                                             ft.Text(value="PESO", color='#000000', size=14, weight='bold', opacity=0.4),
                                         ],
                                     ),
-                                    ft.Text(value=f"{90.0} kg", color='#000000', size=22, weight='bold', opacity=0.6),
+                                    peso_pokemon,
                                 ],
                             ),
                             ft.Column(
