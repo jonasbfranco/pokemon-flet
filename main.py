@@ -52,12 +52,64 @@ def main(page: ft.Page):
             imagem.src = sprite_url
             nome.value = name
             numero.value = numero_pokemon.current
+            numero_pokebola.value = f"#{numero_pokemon.current}"
 
             tipo = f"{resultado['types'][0]['type']['name']}"
             tipo_pokemon.value = tipo
+            btn_tipo1.bgcolor = (
+                "#4592C4" if tipo_pokemon.value == 'water' else
+                "#9BCC50" if tipo_pokemon.value == 'grass' else
+                "#F79F1F" if tipo_pokemon.value == 'fire' else
+                "#729F3F" if tipo_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo_pokemon.value == 'normal' else
+                "#B97FC9" if tipo_pokemon.value == 'poison' else
+                "#51C4E7" if tipo_pokemon.value == 'ice' else
+                "#EED535" if tipo_pokemon.value == 'electric' else
+                "#AB9842" if tipo_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo_pokemon.value == 'fairy' else
+                "#D56723" if tipo_pokemon.value == 'fighting' else
+                "#F366B9" if tipo_pokemon.value == 'psychic' else
+                "#A38C21" if tipo_pokemon.value == 'rock' else
+                "#F16E57" if tipo_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
 
-            height = f"{resultado['height']} Kg"
-            peso_pokemon.value = height
+            # alterando cor de fundo da imagem do pokemon
+            imagem_pokemon.bgcolor = btn_tipo1.bgcolor
+
+
+            tipo2 = f"{resultado['types'][1]['type']['name']}" if len(resultado['types']) > 1 else ""
+            tipo2_pokemon.value = tipo2
+            btn_tipo2.bgcolor = (
+                "#4592C4" if tipo2_pokemon.value == 'water' else
+                "#9BCC50" if tipo2_pokemon.value == 'grass' else
+                "#F79F1F" if tipo2_pokemon.value == 'fire' else
+                "#729F3F" if tipo2_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo2_pokemon.value == 'normal' else
+                "#B97FC9" if tipo2_pokemon.value == 'poison' else
+                "#51C4E7" if tipo2_pokemon.value == 'ice' else
+                "#EED535" if tipo2_pokemon.value == 'electric' else
+                "#AB9842" if tipo2_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo2_pokemon.value == 'fairy' else
+                "#D56723" if tipo2_pokemon.value == 'fighting' else
+                "#F366B9" if tipo2_pokemon.value == 'psychic' else
+                "#A38C21" if tipo2_pokemon.value == 'rock' else
+                "#F16E57" if tipo2_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo2_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
+
+
+
+            height = f"{resultado['height'] / 10:.1f} m"
+            altura_pokemon.value = height
+
+            weight = f"{resultado['weight'] / 10:.1f} Kg".rstrip('0').rstrip('.') if resultado['weight'] % 10 != 0 else f"{resultado['weight'] // 10} Kg"
+            peso_pokemon.value = weight
+
+            abilities = f"{resultado['abilities'][0]['ability']['name']}"
+            habilidade.value = abilities
 
             page.update()
             ## update_pokemon_image()
@@ -70,12 +122,62 @@ def main(page: ft.Page):
             imagem.src = sprite_url
             nome.value = name
             numero.value = numero_pokemon.current
+            numero_pokebola.value = f"#{numero_pokemon.current}"
 
             tipo = f"{resultado['types'][0]['type']['name']}"
             tipo_pokemon.value = tipo
+            btn_tipo1.bgcolor = (
+                "#4592C4" if tipo_pokemon.value == 'water' else
+                "#9BCC50" if tipo_pokemon.value == 'grass' else
+                "#F79F1F" if tipo_pokemon.value == 'fire' else
+                "#729F3F" if tipo_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo_pokemon.value == 'normal' else
+                "#B97FC9" if tipo_pokemon.value == 'poison' else
+                "#51C4E7" if tipo_pokemon.value == 'ice' else
+                "#EED535" if tipo_pokemon.value == 'electric' else
+                "#AB9842" if tipo_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo_pokemon.value == 'fairy' else
+                "#D56723" if tipo_pokemon.value == 'fighting' else
+                "#F366B9" if tipo_pokemon.value == 'psychic' else
+                "#A38C21" if tipo_pokemon.value == 'rock' else
+                "#F16E57" if tipo_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
 
-            height = f"{resultado['height']} Kg"
-            peso_pokemon.value = height
+            # alterando cor de fundo da imagem do pokemon
+            imagem_pokemon.bgcolor = btn_tipo1.bgcolor
+
+            tipo2 = f"{resultado['types'][1]['type']['name']}" if len(resultado['types']) > 1 else ""
+            tipo2_pokemon.value = tipo2
+            btn_tipo2.bgcolor = (
+                "#4592C4" if tipo2_pokemon.value == 'water' else
+                "#9BCC50" if tipo2_pokemon.value == 'grass' else
+                "#F79F1F" if tipo2_pokemon.value == 'fire' else
+                "#729F3F" if tipo2_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo2_pokemon.value == 'normal' else
+                "#B97FC9" if tipo2_pokemon.value == 'poison' else
+                "#51C4E7" if tipo2_pokemon.value == 'ice' else
+                "#EED535" if tipo2_pokemon.value == 'electric' else
+                "#AB9842" if tipo2_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo2_pokemon.value == 'fairy' else
+                "#D56723" if tipo2_pokemon.value == 'fighting' else
+                "#F366B9" if tipo2_pokemon.value == 'psychic' else
+                "#A38C21" if tipo2_pokemon.value == 'rock' else
+                "#F16E57" if tipo2_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo2_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
+
+
+            height = f"{resultado['height'] / 10:.1f} m"
+            altura_pokemon.value = height
+
+            weight = f"{resultado['weight'] / 10:.1f} Kg".rstrip('0').rstrip('.') if resultado['weight'] % 10 != 0 else f"{resultado['weight'] // 10} Kg"
+            peso_pokemon.value = weight
+
+            abilities = f"{resultado['abilities'][0]['ability']['name']}"
+            habilidade.value = abilities
 
             page.update()
 
@@ -92,12 +194,63 @@ def main(page: ft.Page):
             imagem.src = sprite_url
             nome.value = name
             numero.value = numero_pokemon.current
+            numero_pokebola.value = f"#{numero_pokemon.current}"
 
             tipo = f"{resultado['types'][0]['type']['name']}"
             tipo_pokemon.value = tipo
+            btn_tipo1.bgcolor = (
+                "#4592C4" if tipo_pokemon.value == 'water' else
+                "#9BCC50" if tipo_pokemon.value == 'grass' else
+                "#F79F1F" if tipo_pokemon.value == 'fire' else
+                "#729F3F" if tipo_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo_pokemon.value == 'normal' else
+                "#B97FC9" if tipo_pokemon.value == 'poison' else
+                "#51C4E7" if tipo_pokemon.value == 'ice' else
+                "#EED535" if tipo_pokemon.value == 'electric' else
+                "#AB9842" if tipo_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo_pokemon.value == 'fairy' else
+                "#D56723" if tipo_pokemon.value == 'fighting' else
+                "#F366B9" if tipo_pokemon.value == 'psychic' else
+                "#A38C21" if tipo_pokemon.value == 'rock' else
+                "#F16E57" if tipo_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
 
-            height = f"{resultado['height']} Kg"
-            peso_pokemon.value = height
+            # alterando cor de fundo da imagem do pokemon
+            imagem_pokemon.bgcolor = btn_tipo1.bgcolor
+
+            tipo2 = f"{resultado['types'][1]['type']['name']}" if len(resultado['types']) > 1 else ""
+            tipo2_pokemon.value = tipo2
+            btn_tipo2.bgcolor = (
+                "#4592C4" if tipo2_pokemon.value == 'water' else
+                "#9BCC50" if tipo2_pokemon.value == 'grass' else
+                "#F79F1F" if tipo2_pokemon.value == 'fire' else
+                "#729F3F" if tipo2_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo2_pokemon.value == 'normal' else
+                "#B97FC9" if tipo2_pokemon.value == 'poison' else
+                "#51C4E7" if tipo2_pokemon.value == 'ice' else
+                "#EED535" if tipo2_pokemon.value == 'electric' else
+                "#AB9842" if tipo2_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo2_pokemon.value == 'fairy' else
+                "#D56723" if tipo2_pokemon.value == 'fighting' else
+                "#F366B9" if tipo2_pokemon.value == 'psychic' else
+                "#A38C21" if tipo2_pokemon.value == 'rock' else
+                "#F16E57" if tipo2_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo2_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
+
+
+
+            height = f"{resultado['height'] / 10:.1f} m"
+            altura_pokemon.value = height
+
+            weight = f"{resultado['weight'] / 10:.1f} Kg".rstrip('0').rstrip('.') if resultado['weight'] % 10 != 0 else f"{resultado['weight'] // 10} Kg"
+            peso_pokemon.value = weight
+
+            abilities = f"{resultado['abilities'][0]['ability']['name']}"
+            habilidade.value = abilities
 
             page.update()
 
@@ -111,12 +264,64 @@ def main(page: ft.Page):
             imagem.src = sprite_url
             nome.value = name
             numero.value = numero_pokemon.current
+            numero_pokebola.value = f"#{numero_pokemon.current}"
 
             tipo = f"{resultado['types'][0]['type']['name']}"
             tipo_pokemon.value = tipo
+            btn_tipo1.bgcolor = (
+                "#4592C4" if tipo_pokemon.value == 'water' else
+                "#9BCC50" if tipo_pokemon.value == 'grass' else
+                "#F79F1F" if tipo_pokemon.value == 'fire' else
+                "#729F3F" if tipo_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo_pokemon.value == 'normal' else
+                "#B97FC9" if tipo_pokemon.value == 'poison' else
+                "#51C4E7" if tipo_pokemon.value == 'ice' else
+                "#EED535" if tipo_pokemon.value == 'electric' else
+                "#AB9842" if tipo_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo_pokemon.value == 'fairy' else
+                "#D56723" if tipo_pokemon.value == 'fighting' else
+                "#F366B9" if tipo_pokemon.value == 'psychic' else
+                "#A38C21" if tipo_pokemon.value == 'rock' else
+                "#F16E57" if tipo_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
 
-            height = f"{resultado['height']} Kg"
-            peso_pokemon.value = height
+            # alterando cor de fundo da imagem do pokemon
+            imagem_pokemon.bgcolor = btn_tipo1.bgcolor
+
+            tipo2 = f"{resultado['types'][1]['type']['name']}" if len(resultado['types']) > 1 else ""
+            tipo2_pokemon.value = tipo2
+            tipo2 = f"{resultado['types'][1]['type']['name']}" if len(resultado['types']) > 1 else ""
+            tipo2_pokemon.value = tipo2
+            btn_tipo2.bgcolor = (
+                "#4592C4" if tipo2_pokemon.value == 'water' else
+                "#9BCC50" if tipo2_pokemon.value == 'grass' else
+                "#F79F1F" if tipo2_pokemon.value == 'fire' else
+                "#729F3F" if tipo2_pokemon.value == 'bug' else
+                "#A4ACAF" if tipo2_pokemon.value == 'normal' else
+                "#B97FC9" if tipo2_pokemon.value == 'poison' else
+                "#51C4E7" if tipo2_pokemon.value == 'ice' else
+                "#EED535" if tipo2_pokemon.value == 'electric' else
+                "#AB9842" if tipo2_pokemon.value == 'ground' else
+                "#FDB9E9" if tipo2_pokemon.value == 'fairy' else
+                "#D56723" if tipo2_pokemon.value == 'fighting' else
+                "#F366B9" if tipo2_pokemon.value == 'psychic' else
+                "#A38C21" if tipo2_pokemon.value == 'rock' else
+                "#F16E57" if tipo2_pokemon.value == 'dragon' else
+                "#7B62A3" if tipo2_pokemon.value == 'ghost' else
+                "#FFFFFF"
+            )
+
+
+            height = f"{resultado['height'] / 10:.1f} m"
+            altura_pokemon.value = height
+
+            weight = f"{resultado['weight'] / 10:.1f} Kg".rstrip('0').rstrip('.') if resultado['weight'] % 10 != 0 else f"{resultado['weight'] // 10} Kg"
+            peso_pokemon.value = weight
+
+            abilities = f"{resultado['abilities'][0]['ability']['name']}"
+            habilidade.value = abilities
 
 
             page.update()
@@ -137,7 +342,7 @@ def main(page: ft.Page):
     nome = ft.Text(
                 value="bulbasaur", 
                 color="#353B48", 
-                size=36, 
+                size=46, 
                 weight="bold", 
                 font_family="zpix"
             )
@@ -157,14 +362,92 @@ def main(page: ft.Page):
                 weight="bold", 
                 font_family="zpix"
             )
+    tipo2_pokemon = ft.Text(
+                value=f"poison", 
+                color="#FFFFFF", 
+                size=16, 
+                weight="bold", 
+                font_family="zpix"
+            )
 
     peso_pokemon = ft.Text(
-                value=f"{7} kg", 
+                value=f"{6.9} kg", 
                 color='#000000', 
                 size=22, 
                 weight='bold', 
                 opacity=0.6,
             )
+    
+    altura_pokemon = ft.Text(
+                value=f"{0.7} m", 
+                color='#000000', 
+                size=22, 
+                weight='bold', 
+                opacity=0.6,
+            )
+
+    habilidade = ft.Text(
+            value=f"overgrow", 
+            color='#000000', 
+            size=22, 
+            weight='bold', 
+            opacity=0.6
+        )
+    
+    numero_pokebola = ft.Text(
+            value=f"#1", 
+            color="#7F8C8D", 
+            size=40, 
+            weight="bold", 
+            font_family="zpix"
+        )
+
+    btn_tipo1 = ft.Container(
+            height=HEIGHT-730,
+            width=WIDTH-260,
+            top = 450,
+            left=20,
+            bgcolor="#9BCC50",
+            border_radius=30,
+            alignment=ft.alignment.center,
+            padding=ft.padding.only(left=10, top=10, right=10, bottom=10),
+            content=tipo_pokemon,
+        )
+
+    btn_tipo2 = ft.Container(
+            height=HEIGHT-730,
+            width=WIDTH-260,
+            top = 450,
+            right=20,
+            bgcolor="#B97FC9",
+            border_radius=30,
+            alignment=ft.alignment.center,
+            padding=ft.padding.only(left=10, top=10, right=10, bottom=10),
+            content=tipo2_pokemon,
+        )
+
+
+    imagem_pokemon = ft.Container(
+            content=ft.Column(
+                alignment=ft.MainAxisAlignment.CENTER,
+                controls=[
+                    ft.Row(
+                        alignment=ft.MainAxisAlignment.CENTER,
+                        controls=[
+                            imagem,
+                        ],
+                    ),
+                ],
+            ),
+            bgcolor="#9BCC50",
+            padding=10,
+            border_radius=35,
+            width=WIDTH,
+            height=HEIGHT - 500,
+        )
+
+
+
 
     
     page.add(
@@ -181,24 +464,8 @@ def main(page: ft.Page):
                         bgcolor=ft.colors.GREEN_200,
                         height=HEIGHT - 540,
                     ),
-                    ft.Container(
-                        content=ft.Column(
-                            alignment=ft.MainAxisAlignment.CENTER,
-                            controls=[
-                                ft.Row(
-                                    alignment=ft.MainAxisAlignment.CENTER,
-                                    controls=[
-                                        imagem,
-                                    ],
-                                ),
-                            ],
-                        ),
-                        bgcolor="#F79F1F",
-                        padding=10,
-                        border_radius=35,
-                        width=WIDTH,
-                        height=HEIGHT - 500,
-                    ),
+                    
+                    imagem_pokemon,
 
                     
                     ft.Column(
@@ -234,9 +501,8 @@ def main(page: ft.Page):
 
                     ft.Column(
                         spacing=0,
-                        top=290,
+                        top=310,
                         left=20,
-                        right=20,
                         alignment=ft.CrossAxisAlignment.START,
                         controls=[
                             ft.Row(
@@ -249,32 +515,8 @@ def main(page: ft.Page):
                                         height=100,
                                         controls=[
                                             nome,
-                                            numero,
                                         ],
-                                    ),
-
-                                    ft.Row(
-                                        height=46,
-                                        spacing=10,
-                                        controls=[
-                                            ft.Column(
-                                                spacing=0,
-                                                alignment=ft.MainAxisAlignment.END,
-                                                controls=[
-                                                    ft.Text(value=f"Nível", color="#7F8C8D", size=10, weight="bold", font_family="zpix"),
-                                                    ft.Text(value="EVOLUÇÃO", color="#7F8C8D", size=10, weight="bold", font_family="zpix"),
-                                                ],
-                                            ),
-
-                                            ft.Row(
-                                                controls=[
-                                                ft.Text(value=f"{nivel}", color="#7F8C8D", size=40, weight="bold", font_family="zpix"),
-
-                                                ]
-                                            ),
-                                        ],
-                                    ),
-                                    
+                                    ),   
                                 ],
                             ),
                             
@@ -282,36 +524,40 @@ def main(page: ft.Page):
                         ],
                     ),
 
-
-                    ft.Container(
-                        height=HEIGHT-730,
-                        width=WIDTH-260,
-                        top = 400,
-                        left=20,
-                        bgcolor="#F79F1F",
-                        border_radius=30,
-                        alignment=ft.alignment.center,
-                        padding=ft.padding.only(left=10, top=10, right=10, bottom=10),
-                        content=tipo_pokemon,
-                    ),
-
-                    ft.Row(
-                        left=20,
-                        top=485,
+                    ft.Column(
+                        spacing=0,
+                        top=370,
+                        right=20,
+                        alignment=ft.CrossAxisAlignment.START,
                         controls=[
-                            ft.Text(
-                                value=f"Ele cospe fogo que é quente o suficiente para derreter pedregulhos. Pode causar incêndios florestais soprando chamas:",
-                                color="#7F8C8D",
-                                size=14,
-                                weight="bold",
-                                max_lines=4,
-                                width=WIDTH-80,
-                                text_align="justify",    
-                            )
+                            ft.Row(
+                                height=46,
+                                spacing=10,
+                                controls=[
+                                    ft.Column(
+                                        spacing=0,
+                                        alignment=ft.MainAxisAlignment.END,
+                                        controls=[
+                                            ft.Text(value=f"Número", color="#7F8C8D", size=14, weight="bold", font_family="zpix"),
+                                            ft.Text(value="POKEBOLA", color="#7F8C8D", size=16, weight="bold", font_family="zpix"),
+                                        ],
+                                    ),
+
+                                    ft.Row(
+                                        controls=[
+                                            numero_pokebola,
+                                        ]
+                                    ),
+                                ],
+                            ),
                         ],
                     ),
 
 
+                    btn_tipo1,
+                    btn_tipo2,
+
+                    
                     ft.Row(
                         top=590,
                         left=20,
@@ -342,7 +588,7 @@ def main(page: ft.Page):
                                             ft.Text(value="ALTURA", color='#000000', size=14, weight='bold', opacity=0.4),
                                         ],
                                     ),
-                                    ft.Text(value=f"{1.7} m", color='#000000', size=22, weight='bold', opacity=0.6),
+                                    altura_pokemon,
                                 ],
                             ),
                             ft.Column(
@@ -355,7 +601,7 @@ def main(page: ft.Page):
                                             ft.Text(value="HABILIDADE", color='#000000', size=14, weight='bold', opacity=0.4),
                                         ],
                                     ),
-                                    ft.Text(value=f"Chama", color='#000000', size=22, weight='bold', opacity=0.6),
+                                    habilidade,
                                 ],
                             ),
                         ],
